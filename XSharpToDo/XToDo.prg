@@ -11,15 +11,20 @@ USING System.Text
 
 BEGIN NAMESPACE XSharpToDo
 
-   DEFINE CLASS XToDo as Custom
-    public id as string
-    public title as string
+    DEFINE CLASS XToDo as Custom
+    private id as string
+    private title as string
     public descript as string
-    public entered as datetime
-    public completed as boolean
+    private entered as datetime
+    private completed as boolean
     private isEditing as boolean
     
- 
+    public FUNCTION Constructor() // No Parameter. New Task.
+    This.clear()
+    
+    public FUNCTION Constructor(cId AS String) // Parameter. Existing Task
+    This.load(cId)
+    
     public PROCEDURE clear    
         This.id = ""
         This.title = ""
@@ -29,7 +34,7 @@ BEGIN NAMESPACE XSharpToDo
     
     public FUNCTION load(cId) AS Boolean
         var lReturn := False
-        SELECT "ToDos"
+        SELECT ToDos
         LOCATE FOR id = cId
         lReturn = FOUND()
         IF lReturn
@@ -37,13 +42,13 @@ BEGIN NAMESPACE XSharpToDo
                 This.title = ToDos.title
                 This.descript = ToDos.descript
                 This.entered = Todos.entered
-                This.completed = ToDos.completed
+            This.completed = ToDos.completed
         else
             This.clear()
         ENDIF         
         return lReturn
     END FUNCTION
-      
+    
     PUBLIC FUNCTION SAVE() AS STRING
         VAR LRETURN := FALSE
         LOCATE FOR ID = THIS.ID
@@ -57,11 +62,14 @@ BEGIN NAMESPACE XSharpToDo
         ENDIF 
         REPLACE TITLE WITH THIS.TITLE, DESCRIPT WITH THIS.DESCRIPT = TODOS.DESCRIPT, COMPLETED WITH THIS.COMPLETED, ENTERED WITH DATETIME.NOW, ISEDITING WITH FALSE
         RETURN TODOS.ID
-        END FUNCTION
+    END FUNCTION
+    
+    PUBLIC FUNCTION Complete() AS Boolean
+        LOCAL cId
+        cId = This.SAVE()
+        This.Completed = not empty(cId)
+        RETURN This.Completed
+        
     end define
-
-    PROCEDURE Complete
-	This.Completed=.t.
-	RETURN This.Save()
     
 END NAMESPACE // XSharpToDo

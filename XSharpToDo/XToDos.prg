@@ -17,7 +17,7 @@ BEGIN NAMESPACE XSharpToDo
     private aToDos AS ARRAY OF XToDo
     
     public Function Init()
-        SET EXCLUSIVE OFF
+    SET EXCLUSIVE OFF
         This.cTableName = "C:\DEV\XSHARPTODO\ToDos"
         This.cAlias = "ToDos"
         This.nToDos = 0
@@ -26,7 +26,7 @@ BEGIN NAMESPACE XSharpToDo
     end function
     
     public FUNCTION openToDos() AS Boolean
-        SET DEFAULT TO "C:\DEV\XSHARPTODO"
+    SET DEFAULT TO "C:\DEV\XSHARPTODO"
         // Console.WriteLine(GetDefault())
         IF NOT used("TODOS")
             SELECT 0
@@ -43,30 +43,29 @@ BEGIN NAMESPACE XSharpToDo
     PUBLIC FUNCTION getToDo(cId as string) as XToDo
         VAR oToDo = createObject("XToDo")
         oToDo.Load(cId)
-        return oToDo
-        
+    return oToDo
+    
     public PROCEDURE Load
-	LOCAL n as int 
-	This.OpenTodos()
-	SET DELETED ON 
-	COUNT TO This.nToDos
-    This.aToDo = {}
-	SCAN 
+        This.OpenTodos()
+        SET DELETED ON 
+        COUNT TO This.nToDos
+        This.aToDo = {}
+        SCAN 
         oTodo = CreateObject("XToDo", ToDos.id)
         AAdd(This.aTodos, oTodo)
-	ENDSCAN
-	This.CloseTodos()
-	RETURN This.nToDos
+        ENDSCAN
+        This.CloseTodos()
+    RETURN This.nToDos
     
     public Function New AS Int
-	This.nTodos = This.nTodos + 1
-    oTodo = CreateObject("XToDo")   // No ID
-	oToDo.Save()
-    AAdd(This.aTodos, oTodo)
-	RETURN This.nToDos
-    
-   
+        This.nTodos = This.nTodos + 1
+        VAR  oTodo = CreateObject("XToDo")   // No ID
+        oToDo.Save()
+        AAdd(This.aTodos, oTodo)
+        RETURN This.nToDos
+        
+        
     END DEFINE
     
     END NAMESPACE
-    
+
