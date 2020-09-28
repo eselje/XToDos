@@ -18,7 +18,7 @@ BEGIN NAMESPACE XSharpToDo
     
     public Function Init()
     SET EXCLUSIVE OFF
-        This.cTableName = "C:\DEV\XSHARPTODO\ToDos"
+        This.cTableName = "C:\DEV\XToDos\ToDos"
         This.cAlias = "ToDos"
         This.nToDos = 0
         RDDSetDefault("DBFVFP") // This is the default if dialect is FoxPro
@@ -26,11 +26,11 @@ BEGIN NAMESPACE XSharpToDo
     end function
     
     public FUNCTION openToDos() AS Boolean
-    SET DEFAULT TO "C:\DEV\XSHARPTODO"
+ 
         // Console.WriteLine(GetDefault())
         IF NOT used("TODOS")
             SELECT 0
-            USE "TODOS" ALIAS "ToDos" SHARED
+            USE (This.cTableName) SHARED
         ENDIF
         return used("TODOS")
     END FUNCTION

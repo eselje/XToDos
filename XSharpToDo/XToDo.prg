@@ -68,6 +68,7 @@ BEGIN NAMESPACE XSharpToDo
     
    	PROCEDURE New
     LOCAL lUsed
+    
     This.clear()
     VAR g = GUID.NEWGUID()
     This.id = g.TOSTRING()
