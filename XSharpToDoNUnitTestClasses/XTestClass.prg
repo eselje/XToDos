@@ -16,7 +16,7 @@ USING NUnit.Framework
 
 BEGIN NAMESPACE XSharpToDoNUnitTestClasses
 	[TestFixture];
-	CLASS TestClass
+	PUBLIC CLASS TestClass
 	CONSTRUCTOR() STRICT  
 		RETURN
 	[Test];
@@ -33,9 +33,9 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
 	RETURN
     [Test];
 	METHOD getToDo AS VOID STRICT
-       VAR oAccess := XSharpToDo.XToDos{}
-       IF oAccess.openTodos()
-            VAR oTodo := oAccess.getToDo("1")
+       VAR oToDos := XSharpToDo.XToDos{}
+       IF oToDos.openTodos()
+            VAR oTodo := oToDos.getToDo("1")
             VAR cExpected := "Load up sailing gear"
 	        Assert.AreEqual(cExpected, oTodo.descript, "Did not get the right TODO")
         else

@@ -12,18 +12,20 @@ USING System.Text
 BEGIN NAMESPACE XSharpToDo
 
     DEFINE CLASS XToDo as Custom
-    private id as string
-    private title as string
+    public id as string
+    public title as string
     public descript as string
-    private entered as datetime
-    private completed as boolean
+    public entered as datetime
+    public completed as boolean
     private isEditing as boolean
+    private isNew as boolean
     
     public FUNCTION Constructor() // No Parameter. New Task.
-    This.clear()
+        This.new()
     
     public FUNCTION Constructor(cId AS String) // Parameter. Existing Task
-    This.load(cId)
+        This.id = cId
+        This.load(cId)
     
     public PROCEDURE clear    
         This.id = ""
@@ -32,9 +34,9 @@ BEGIN NAMESPACE XSharpToDo
         This.completed = False
     end procedure 
     
-    public FUNCTION load(cId) AS Boolean
-        var lReturn := False
-        SELECT ToDos
+    public FUNCTION load(cId AS String) AS Boolean
+        var lReturn = False
+        This.openToDos()
         LOCATE FOR id = cId
         lReturn = FOUND()
         IF lReturn
@@ -46,6 +48,7 @@ BEGIN NAMESPACE XSharpToDo
         else
             This.clear()
         ENDIF         
+        This.CloseToDos()
         return lReturn
     END FUNCTION
     
@@ -53,23 +56,44 @@ BEGIN NAMESPACE XSharpToDo
         VAR LRETURN := FALSE
         LOCATE FOR ID = THIS.ID
         LRETURN = FOUND()
-        IF NOT LRETURN
-            VAR G = GUID.NEWGUID()
-            VAR CNEWID = G.TOSTRING()
+        IF NOT LRETURN          
             // INSERT INTO TODOS (ID) VALUES (CNEWID)
             APPEND BLANK
             REPLACE ID WITH CNEWID, ISEDITING WITH TRUE
         ENDIF 
         REPLACE TITLE WITH THIS.TITLE, DESCRIPT WITH THIS.DESCRIPT = TODOS.DESCRIPT, COMPLETED WITH THIS.COMPLETED, ENTERED WITH DATETIME.NOW, ISEDITING WITH FALSE
+        This.isNew = false
         RETURN TODOS.ID
     END FUNCTION
     
+   	PROCEDURE New
+    LOCAL lUsed
+    This.clear()
+    VAR g = GUID.NEWGUID()
+    This.id = g.TOSTRING()
+    this.entered = DateTime.Now
+    this.isEditing = true  
+	This.isNew = .t. 
+	RETURN This.oData
+
     PUBLIC FUNCTION Complete() AS Boolean
         LOCAL cId
         cId = This.SAVE()
         This.Completed = not empty(cId)
-        RETURN This.Completed
-        
-    end define
+        RETURN This.Completed       
+   
+   public FUNCTION openToDos() AS Boolean
+        IF NOT used("TODOS")
+            SELECT 0
+            USE "TODOS" ALIAS "ToDos" SHARED
+        ENDIF
+        return used("TODOS")
+    END FUNCTION
+    
+    public FUNCTION closeToDos() AS Boolean
+        USE IN (CoreDb.SymSelect("ToDos"))
+        return not used("Todos")
+    END FUNCTION
+   end define
     
 END NAMESPACE // XSharpToDo
