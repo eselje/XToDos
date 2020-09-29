@@ -11,6 +11,8 @@ Project("{AA6C8D78-22FF-423A-9C7C-5F2393824E04}") = "ToDoConsoleTests", "ToDoCon
 EndProject
 Project("{AA6C8D78-22FF-423A-9C7C-5F2393824E04}") = "ToDoInterface", "ToDoInterface\ToDoInterface.xsproj", "{4CD29DC0-0A75-4039-948D-BC70A9D06C09}"
 EndProject
+Project("{AA6C8D78-22FF-423A-9C7C-5F2393824E04}") = "WpfApplication1", "WpfApplication1\WpfApplication1.xsproj", "{58FF795A-B63D-4F99-80B6-C388080893A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FF795A-B63D-4F99-80B6-C388080893A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FF795A-B63D-4F99-80B6-C388080893A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FF795A-B63D-4F99-80B6-C388080893A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FF795A-B63D-4F99-80B6-C388080893A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
