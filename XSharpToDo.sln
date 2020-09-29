@@ -9,6 +9,8 @@ Project("{AA6C8D78-22FF-423A-9C7C-5F2393824E04}") = "XSharpToDoNUnitTestClasses"
 EndProject
 Project("{AA6C8D78-22FF-423A-9C7C-5F2393824E04}") = "ToDoConsoleTests", "ToDoConsoleTests\ToDoConsoleTests.xsproj", "{B14B552A-9160-45BF-A779-86155D8A2BDF}"
 EndProject
+Project("{AA6C8D78-22FF-423A-9C7C-5F2393824E04}") = "ToDoInterface", "ToDoInterface\ToDoInterface.xsproj", "{4CD29DC0-0A75-4039-948D-BC70A9D06C09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B14B552A-9160-45BF-A779-86155D8A2BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14B552A-9160-45BF-A779-86155D8A2BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B14B552A-9160-45BF-A779-86155D8A2BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CD29DC0-0A75-4039-948D-BC70A9D06C09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
