@@ -16,13 +16,21 @@ USING System.Windows.Shapes
 BEGIN NAMESPACE ToDoInterface
 
     /// <summary>
-    /// Interaction logic for WPFWindow1.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    PUBLIC PARTIAL CLASS MainWindow INHERIT NavigationWindow
+    PUBLIC PARTIAL CLASS MainWindow INHERIT Window
     
         PUBLIC CONSTRUCTOR() STRICT
             InitializeComponent()
 			RETURN
-
+            
+	
+		METHOD TextBox_SelectionChanged(sender as TextBox, e as RoutedEventArgs) AS VOID
+			var textBox := sender 
+			Self.txtStatus.Text := "Selection starts at character #" + textBox.SelectionStart + Environment.NewLine
+			Self.txtStatus.Text += "Selection is " + textBox.SelectionLength + " character(s) long" + Environment.NewLine
+			Self.txtStatus.Text += "Selected text: '" + textBox.SelectedText + "'"
+		    RETURN
+            
     END CLASS
 END NAMESPACE

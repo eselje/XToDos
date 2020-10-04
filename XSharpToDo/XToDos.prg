@@ -14,7 +14,8 @@ BEGIN NAMESPACE XSharpToDo
     private cTableName AS String 
     private cAlias AS String 
     private nTodos AS Int 
-    private aToDos AS ARRAY OF XToDo
+//  private aToDos AS ARRAY OF XToDo
+    private aToDos AS List<XToDo>
     
     public Function Init()
     SET EXCLUSIVE OFF
@@ -51,8 +52,9 @@ BEGIN NAMESPACE XSharpToDo
         COUNT TO This.nToDos
         This.aToDo = {}
         SCAN 
-        oTodo = CreateObject("XToDo", ToDos.id)
-        AAdd(This.aTodos, oTodo)
+           oTodo = CreateObject("XToDo", ToDos.id)
+        // AAdd(This.aTodos, oTodo)
+            aToDos.Add(oToDo)
         ENDSCAN
         This.CloseTodos()
     RETURN This.nToDos
@@ -61,7 +63,8 @@ BEGIN NAMESPACE XSharpToDo
         This.nTodos = This.nTodos + 1
         VAR  oTodo = CreateObject("XToDo")   // No ID
         oToDo.Save()
-        AAdd(This.aTodos, oTodo)
+        // AAdd(This.aTodos, oTodo)
+        aToDos.Add(oToDo)
         RETURN This.nToDos
         
         

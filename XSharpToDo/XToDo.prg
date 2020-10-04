@@ -37,8 +37,12 @@ BEGIN NAMESPACE XSharpToDo
     public FUNCTION load(cId AS String) AS Boolean
         var lReturn = False
         This.openToDos()
+//        GO TOP 
         LOCATE FOR id = cId
+//        SET ORDER TO id
+//        dbSeek(cId)
         lReturn = FOUND()
+        
         IF lReturn
                 This.id = ToDos.id
                 This.title = ToDos.title
@@ -85,8 +89,9 @@ BEGIN NAMESPACE XSharpToDo
    
    public FUNCTION openToDos() AS Boolean
         IF NOT used("TODOS")
+            SET DEFA TO "C:\DEV\XTODOS"
             SELECT 0
-            USE "TODOS" ALIAS "ToDos" SHARED
+            USE "TODOS" ALIAS "ToDos" SHARED  
         ENDIF
         return used("TODOS")
     END FUNCTION
