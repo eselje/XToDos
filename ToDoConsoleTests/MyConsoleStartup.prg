@@ -3,8 +3,8 @@ USING XSharpToDo
 
 FUNCTION Start() AS VOID STRICT
     LOCAL oToDo AS XToDo, cTestId AS String, cDescript As String 
-    cTestId := "EDF53AEF-5C29-4DC4-A"
-    oToDo := createObject("XToDo")
+    cTestId = "EDF53AEF-5C29-4DC4-A"
+    oToDo = createObject("XToDo")
     IF oToDo.openToDos()
         SET DELETE ON
         SCAN

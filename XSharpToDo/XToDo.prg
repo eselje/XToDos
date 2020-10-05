@@ -37,10 +37,9 @@ BEGIN NAMESPACE XSharpToDo
     public FUNCTION load(cId AS String) AS Boolean
         var lReturn = False
         This.openToDos()
-//        GO TOP 
-        LOCATE FOR id = cId
-//        SET ORDER TO id
-//        dbSeek(cId)
+        SET EXACT OFF
+        GO TOP
+        LOCATE FOR ToDos.id = cId
         lReturn = FOUND()
         
         IF lReturn

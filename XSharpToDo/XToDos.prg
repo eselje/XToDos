@@ -11,15 +11,15 @@ USING System.Text
 BEGIN NAMESPACE XSharpToDo
     
     DEFINE CLASS XToDos AS Custom
-    private cTableName AS String 
-    private cAlias AS String 
-    private nTodos AS Int 
+    cTableName AS String 
+    cAlias AS String 
+    nTodos AS Int 
 //  private aToDos AS ARRAY OF XToDo
-    private aToDos AS List<XToDo>
+    aToDos AS List<XToDo>
     
-    public Function Init()
-    SET EXCLUSIVE OFF
-        This.cTableName = "C:\DEV\XToDos\ToDos"
+    PROCEDURE Init() 
+        SET EXCLUSIVE OFF
+        This.cTableName = "C:\DEV\XToDos\ToDos.dbf"
         This.cAlias = "ToDos"
         This.nToDos = 0
         RDDSetDefault("DBFVFP") // This is the default if dialect is FoxPro
@@ -27,11 +27,12 @@ BEGIN NAMESPACE XSharpToDo
     end function
     
     public FUNCTION openToDos() AS Boolean
- 
+        LOCAL cTableName
+        cTableName = This.cTableName
         // Console.WriteLine(GetDefault())
         IF NOT used("TODOS")
             SELECT 0
-            USE (This.cTableName) SHARED
+            USE (cTableName) SHARED
         ENDIF
         return used("TODOS")
     END FUNCTION

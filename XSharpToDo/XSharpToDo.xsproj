@@ -32,7 +32,7 @@
     <memvar>true</memvar>
     <undeclared>true</undeclared>
     <initlocals>true</initlocals>
-    <fox1>false</fox1>
+    <fox1>true</fox1>
     <OutputName>XSharpToDo</OutputName>
     <XSharpProjectversion>2.6.0.0</XSharpProjectversion>
     <VO1>false</VO1>

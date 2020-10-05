@@ -13,6 +13,8 @@ USING System.Collections.Generic
 USING System.Linq
 USING System.Text
 USING NUnit.Framework
+USING XSharpToDo
+USING XSharp.VFP
 
 BEGIN NAMESPACE XSharpToDoNUnitTestClasses
 	[TestFixture];
@@ -21,26 +23,25 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
 		RETURN
 	[Test];
 	METHOD openToDo AS VOID STRICT
-        VAR oAccess := XSharpToDo.XToDos{}
-        VAR lReturn := oAccess.openTodos()
+        VAR oToDos := XToDos{}
+        // LOCAL oToDos AS XToDos
+        // oToDos = CreateObject("XToDos")
+        // VAR oToDos = XSharp.VFP.CreateObject("XToDos")
+        VAR lReturn := oToDos.openTodos()
 		Assert.IsTrue(lReturn, "Could not open ToDos.dbf")
 	RETURN
 	[Test];
 	METHOD closeToDo AS VOID STRICT
-       VAR oAccess := XSharpToDo.XToDos{}
-       VAR lReturn := oAccess.closeTodos()
+       VAR oToDos := XSharpToDo.XToDos{}
+       VAR lReturn := oToDos.closeTodos()
 		Assert.IsTrue(lReturn, "Could not close ToDos.dbf")
 	RETURN
     [Test];
 	METHOD getToDo AS VOID STRICT
        VAR oToDos := XSharpToDo.XToDos{}
-       IF oToDos.openTodos()
-            VAR oTodo := oToDos.getToDo("1")
-            VAR cExpected := "Load up sailing gear"
-	        Assert.AreEqual(cExpected, oTodo.descript, "Did not get the right TODO")
-        else
-            Assert.Fail("Could not open TODOS.dbf")
-       ENDIF 
+       VAR oTodo := oToDos.getToDo("EDF53AEF-5C29-4DC4-A")
+       VAR cExpected := "Finish paper"
+       Assert.AreEqual(cExpected, oTodo.title, "Did not get the right TODO")
 	RETURN
     [Test];
 	METHOD addToDo AS VOID STRICT
