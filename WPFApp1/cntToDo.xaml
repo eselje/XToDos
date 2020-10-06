@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ToDoInterface2.cntToDo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoInterface2"
+             mc:Ignorable="d" 
+             d:DesignHeight="114" d:DesignWidth="544">
+    <DockPanel>
+        <Image Source="Images\Ribbon.png" Height="43px" DockPanel.Dock="Left" Name="imgRibbon" VerticalAlignment="Top" Margin="5 5 0 0" ></Image>
+        <WrapPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <TextBox Height="20px" Width="360px" Margin="5 5 25 5" Name="txtTitle"></TextBox>
+            <Image Source="Images\CheckMark.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgComplete" ></Image>
+            <Image Source="Images\Edit.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgEdit"></Image>
+            <Image Source="Images\Delete.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgDelete" ></Image>
+        </WrapPanel>
+        <TextBox Margin="5,0,5,15" FontSize="14" Name="edtDescription"/>
+    </DockPanel>
+</UserControl>

@@ -27,8 +27,23 @@ namespace ToDoInterface2
         public MainWindow()
         {
             InitializeComponent();
- 
         }
 
+        private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("New Task");
+        }
+        private void PrintCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void PrintCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Print");
+        }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ToDoInterface2"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="546">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -16,14 +16,8 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Label Content="{Binding Title}" />
         <Label Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding ElementName=txtLimitedInput, Path=Text.Length}" />
-                <TextBlock Text="/" />
-                <TextBlock Text="{Binding MaxLength}" />
-            </StackPanel>
+            <local:cntToDo></local:cntToDo>
         </Label>
-        <TextBox MaxLength="{Binding MaxLength}" Grid.Row="1" Grid.ColumnSpan="2" Name="txtLimitedInput" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
     </Grid>
 </UserControl>

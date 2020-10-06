@@ -1,4 +1,4 @@
-﻿<Window x:Class="ToDoInterface2.MainWindow"
+﻿<Window x:Name="xfrmToDo" x:Class="ToDoInterface2.MainWindow"
         xmlns:uc="clr-namespace:ToDoInterface2.User_Controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,35 +6,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoInterface2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Border Background="LightGreen" Width="100" Height="100" BorderBrush="Green">
-            <Border.Style>
-                <Style TargetType="Border">
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation Duration="0:0:1.400" To="3" Storyboard.TargetProperty="BorderThickness" />
-                                        <DoubleAnimation Duration="0:0:0.300" To="125" Storyboard.TargetProperty="Height" />
-                                        <DoubleAnimation Duration="0:0:0.300" To="125" Storyboard.TargetProperty="Width" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation Duration="0:0:1.250" To="0" Storyboard.TargetProperty="BorderThickness" />
-                                        <DoubleAnimation Duration="0:0:0.150" To="100" Storyboard.TargetProperty="Height" />
-                                        <DoubleAnimation Duration="0:0:0.150" To="100" Storyboard.TargetProperty="Width" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
-        </Border>
-    </Grid>
+        Title="X# To Dos" Height="350" Width="570" WindowStartupLocation="Manual">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Print" Executed="PrintCommand_Executed" CanExecute="PrintCommand_CanExecute" />
+    </Window.CommandBindings>
+    <StackPanel Orientation="Vertical">
+        <ToolBarPanel Height="60" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Command="ApplicationCommands.New" Background="Transparent" BorderThickness="0">
+                <Image Name="imgNew"  Source="Images\Ribbon.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10" ToolTip="Add Task"></Image>
+            </Button>
+            <Button Command="ApplicationCommands.Print" Background="Transparent" BorderThickness="0">
+                <Image Name="imgPrint" Source="Images\Print.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10"></Image>
+            </Button>
+        </ToolBarPanel>
+        <uc:LimitedInputUserControl></uc:LimitedInputUserControl>
+    </StackPanel>
 </Window>
