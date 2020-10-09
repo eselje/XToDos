@@ -12,17 +12,20 @@ BEGIN NAMESPACE XSharpToDo
     
     DEFINE CLASS XToDos AS Custom
     cTableName AS String 
-    cAlias AS String 
+    cAlias AS String
+    cLastId AS String
     nTodos AS Int 
-//  private aToDos AS ARRAY OF XToDo
     aToDos AS List<XToDo>
+    //  private aToDos AS ARRAY OF XToDo
     
     PROCEDURE Init() 
         SET EXCLUSIVE OFF
         This.cTableName = "C:\DEV\XToDos\ToDos.dbf"
         This.cAlias = "ToDos"
         This.nToDos = 0
+        This.aToDos = List<XToDo>{}
         RDDSetDefault("DBFVFP") // This is the default if dialect is FoxPro
+        This.Load()
         return 
     end function
     
@@ -47,29 +50,62 @@ BEGIN NAMESPACE XSharpToDo
         oToDo.Load(cId)
     return oToDo
     
-    public PROCEDURE Load
+    public FUNCTION Load() as Int
+        LOCAL nToDos
+        LOCAL oToDo AS XToDo
         This.OpenTodos()
         SET DELETED ON 
-        COUNT TO This.nToDos
-        This.aToDo = {}
+        COUNT TO nToDos
+        This.aToDos.Clear()
         SCAN 
-           oTodo = CreateObject("XToDo", ToDos.id)
-        // AAdd(This.aTodos, oTodo)
-            aToDos.Add(oToDo)
+            oTodo = CreateObject("XToDo", ToDos.id)
+            // AAdd(This.aTodos, oTodo)
+            This.aToDos.Add(oToDo)
         ENDSCAN
         This.CloseTodos()
+        This.nToDos = nToDos
     RETURN This.nToDos
     
-    public Function New AS Int
+    public Function New(cTitle AS String)  AS Int
         This.nTodos = This.nTodos + 1
         VAR  oTodo = CreateObject("XToDo")   // No ID
+        oToDo.New(cTitle)
         oToDo.Save()
-        // AAdd(This.aTodos, oTodo)
+        This.cLastId = oToDo.Id
         aToDos.Add(oToDo)
         RETURN This.nToDos
         
+    public function toggleCompleted(oTask as XToDo) as boolean
+        // oTask = This.aToDos.Find(x => x.id = cId)
+        oTask.completed = ! oTask.completed
+        oTask.SAVE()
+        This.Load()
+        return oTask.completed
         
+     public function deleteTask(oTask as XToDo) as boolean
+        LOCAL lDeleted AS boolean   
+        lDeleted = oTask.Delete()
+        This.Load()
+        return lDeleted
+   
+    public Function GetLast() AS XToDo
+        VAR  oTodo = CreateObject("XToDo")   // No ID
+        LOCAL cId AS String
+        IF EMPTY(This.cLastId)
+            * Go to the bottom of the ToDos table and get that ID
+            This.openToDos()
+            SET ORDER TO
+            SET DELETED ON
+            GO BOTTOM
+            cId = ToDos.id
+        ELSE
+            cId = This.cLastId
+        ENDIF
+        oTodo.Load(cId)
+        RETURN oToDo
     END DEFINE
-    
-    END NAMESPACE
 
+
+END NAMESPACE
+    
+    

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XSharpToDo;
 
 namespace ToDoInterface2
 {
@@ -27,6 +28,8 @@ namespace ToDoInterface2
         public MainWindow()
         {
             InitializeComponent();
+            XToDos tasks = new XToDos { };            
+            xfrmToDo.ItemsSource = tasks;
         }
 
         private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)

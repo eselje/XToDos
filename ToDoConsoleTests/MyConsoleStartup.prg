@@ -8,21 +8,17 @@ FUNCTION Start() AS VOID STRICT
     IF oToDo.openToDos()
         SET DELETE ON
         SCAN
-            Console.WriteLine("{0:00}: ID: {1}, {2}",  RECNO(), ToDos.id, ToDos.descript)
-//            ? "RECNO()
-//            ? ToDos.id
-//            ?? ToDos.descript
-             IF ToDos.Id = cTestId
-                  cDescript = ToDos.descript
-             ENDIF
+            Console.Write("{0:00}: ID: {1}, {2}",  RECNO(), ToDos.id, ToDos.descript)
+            Console.WriteLine(" - Status: {0}", IIF(ToDos.Completed, "Complete", "Incomplete"))
         ENDSCAN
-        ? cTestId +": " + cDescript
+        
         oToDo.Load(cTestId)
-
+        ? "Loaded " + cTestId + "? " + iif(oToDo.id = cTestId, "Yes", "No")
+        ? oToDo.id +": " + oToDo.Descript + ' - Status: ' + IIF(oToDo.Completed, "Complete", "Incomplete")
         oToDo.closeToDos()
     ELSE
-            ? "Could not open ToDos.dbf"
-            ? "Default folder is " + SET("DEFAULT")
+        ? "Could not open ToDos.dbf"
+        ? "Default folder is " + SET("DEFAULT")
     ENDIF
     WAIT
 	RETURN	

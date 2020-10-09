@@ -62,7 +62,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LimitedInputUserControl.xaml">
+    <Page Include="grdTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,8 +77,8 @@
     <Compile Include="cntToDo.xaml.cs">
       <DependentUpon>cntToDo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LimitedInputUserControl.xaml.cs">
-      <DependentUpon>LimitedInputUserControl.xaml</DependentUpon>
+    <Compile Include="grdTasks.xaml.cs">
+      <DependentUpon>grdTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -117,6 +117,12 @@
     <Resource Include="Images\Delete.png" />
     <Resource Include="Images\Edit.png" />
     <Resource Include="Images\Ribbon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XSharpToDo\XSharpToDo.xsproj">
+      <Project>{1d9bf4a4-39d7-4c2f-9525-73d002453890}</Project>
+      <Name>XSharpToDo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

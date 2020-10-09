@@ -20,6 +20,6 @@
                 <Image Name="imgPrint" Source="Images\Print.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10"></Image>
             </Button>
         </ToolBarPanel>
-        <uc:LimitedInputUserControl></uc:LimitedInputUserControl>
+        <uc:grdTasks name="grdTasks"></uc:grdTasks>
     </StackPanel>
 </Window>

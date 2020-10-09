@@ -18,9 +18,9 @@ namespace ToDoInterface2.User_Controls
     /// <summary>
     /// Interaction logic for LimitedInputUserControl.xaml
     /// </summary>
-    public partial class LimitedInputUserControl : UserControl
+    public partial class grdTasks : UserControl
     {
-        public LimitedInputUserControl()
+        public grdTasks()
         {
             InitializeComponent();
             this.DataContext = this;
