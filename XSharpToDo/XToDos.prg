@@ -5,6 +5,7 @@
 // WorkStation   : WIWP-ES-BC6SBY1USING System
 
 USING System.Collections.Generic
+USING System.Collections.ObjectModel
 USING System.Linq
 USING System.Text
 
@@ -15,7 +16,7 @@ BEGIN NAMESPACE XSharpToDo
     cAlias AS String
     cLastId AS String
     nTodos AS Int 
-    aToDos AS List<XToDo>
+    aToDos AS ObservableCollection<XToDo>
     //  private aToDos AS ARRAY OF XToDo
     
     PROCEDURE Init() 
@@ -23,9 +24,8 @@ BEGIN NAMESPACE XSharpToDo
         This.cTableName = "C:\DEV\XToDos\ToDos.dbf"
         This.cAlias = "ToDos"
         This.nToDos = 0
-        This.aToDos = List<XToDo>{}
+        This.aToDos = ObservableCollection<XToDo>{}
         RDDSetDefault("DBFVFP") // This is the default if dialect is FoxPro
-        This.Load()
         return 
     end function
     

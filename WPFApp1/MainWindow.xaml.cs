@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XSharpToDo;
+using XSharp.VFP;
 
 namespace ToDoInterface2
 {
@@ -24,12 +25,14 @@ namespace ToDoInterface2
     public partial class MainWindow : Window
     {
         //        private System.Collections.ObjectModel.ObservableCollection<User> users = new ObservableCollection<User>();
+        XToDos oTasks = new XToDos { };
 
         public MainWindow()
         {
-            InitializeComponent();
-            XToDos tasks = new XToDos { };            
-            xfrmToDo.ItemsSource = tasks;
+            InitializeComponent();            
+            this.DataContext = this;
+            dgTasks.ItemsSource = this.oTasks.aToDos;
+            this.oTasks.Load();
         }
 
         private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -39,6 +42,7 @@ namespace ToDoInterface2
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("New Task");
+            this.oTasks.New("");
         }
         private void PrintCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -47,6 +51,7 @@ namespace ToDoInterface2
         private void PrintCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("Print");
+            // oTasks.Print();
         }
     }
 }

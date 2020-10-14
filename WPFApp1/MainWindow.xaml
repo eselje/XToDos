@@ -1,5 +1,5 @@
 ﻿<Window x:Name="xfrmToDo" x:Class="ToDoInterface2.MainWindow"
-        xmlns:uc="clr-namespace:ToDoInterface2.User_Controls"
+        xmlns:uc="clr-namespace:ToDoInterface2"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,9 +17,37 @@
                 <Image Name="imgNew"  Source="Images\Ribbon.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10" ToolTip="Add Task"></Image>
             </Button>
             <Button Command="ApplicationCommands.Print" Background="Transparent" BorderThickness="0">
-                <Image Name="imgPrint" Source="Images\Print.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10"></Image>
+                <Image Name="imgPrint" Source="Images\Print.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10" ToolTip="Print To-Do List"></Image>
             </Button>
         </ToolBarPanel>
-        <uc:grdTasks name="grdTasks"></uc:grdTasks>
+        <DataGrid Name="dgTasks">
+            <GridView>
+                <GridViewColumn>
+                    <DockPanel>
+                <local:cntToDo />
+                    </DockPanel>
+                </GridViewColumn>
+            </GridView>
+
+        </DataGrid>
+        <!--<ListView Name="lvTasks" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>
+                        <DockPanel>
+                            <local:cntToDo />
+                            --><!--<Image Source="Images\Ribbon.png" Height="43px" DockPanel.Dock="Left" Name="imgRibbon" VerticalAlignment="Top" Margin="5 5 0 0" ></Image>
+                            <WrapPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                                <TextBox Height="20px" Width="360px" Margin="5 5 25 5" Name="txtTitle" Text="{Binding title}"></TextBox>
+                                <Image Source="Images\CheckMark.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgComplete"  ></Image>
+                                <Image Source="Images\Edit.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgEdit"></Image>
+                                <Image Source="Images\Delete.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgDelete" ></Image>
+                            </WrapPanel>
+                            <TextBox Margin="5,0,5,15" FontSize="14" Name="edtDescription" Text="{Binding descript}"/>--><!--
+                        </DockPanel>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>-->
     </StackPanel>
 </Window>
