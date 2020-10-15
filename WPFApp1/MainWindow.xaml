@@ -21,10 +21,11 @@
             </Button>
         </ToolBarPanel>
         <DataGrid Name="dgTasks">
+            
             <GridView>
                 <GridViewColumn>
                     <DockPanel>
-                <local:cntToDo />
+                        <local:cntToDo />
                     </DockPanel>
                 </GridViewColumn>
             </GridView>

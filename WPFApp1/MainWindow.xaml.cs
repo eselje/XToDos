@@ -25,14 +25,15 @@ namespace ToDoInterface2
     public partial class MainWindow : Window
     {
         //        private System.Collections.ObjectModel.ObservableCollection<User> users = new ObservableCollection<User>();
-        XToDos oTasks = new XToDos { };
+        XToDos oTasks = new XToDos();
 
         public MainWindow()
         {
             InitializeComponent();            
             this.DataContext = this;
-            dgTasks.ItemsSource = this.oTasks.aToDos;
             this.oTasks.Load();
+            dgTasks.ItemsSource = this.oTasks.aToDos;
+            
         }
 
         private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
