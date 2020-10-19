@@ -40,7 +40,7 @@ BEGIN NAMESPACE XSharpToDo
     public FUNCTION load(cId AS String) AS Boolean
         var lReturn = False
         This.openToDos()
-    SET EXACT OFF
+        SET EXACT OFF
         GO TOP
         LOCATE FOR ToDos.id = cId
         lReturn = FOUND()
@@ -130,7 +130,7 @@ BEGIN NAMESPACE XSharpToDo
         
     public FUNCTION openToDos() AS Boolean
         //        XToDos:openToDos()
-    IF NOT used("TODOS")
+    IF NOT USED("TODOS")
         SET DEFA TO "C:\DEV\XTODOS"
             SELECT 0
             USE "TODOS" ALIAS "ToDos" SHARED  
@@ -140,7 +140,7 @@ BEGIN NAMESPACE XSharpToDo
     
     public FUNCTION closeToDos() AS Boolean
         USE IN (CoreDb.SymSelect("ToDos"))
-        return not used("Todos")
+        return not used("Todos")    
         END FUNCTION
     end define
     

@@ -84,6 +84,7 @@
     <Reference Include="XSharp.VFP" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeFile1.prg" />
     <Compile Include="XToDo.prg" />
     <Compile Include="Properties\AssemblyInfo.prg">
       <SubType>Code</SubType>
