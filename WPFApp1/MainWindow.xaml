@@ -11,16 +11,17 @@
         <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
         <CommandBinding Command="ApplicationCommands.Print" Executed="PrintCommand_Executed" CanExecute="PrintCommand_CanExecute" />
     </Window.CommandBindings>
+    
     <StackPanel Orientation="Vertical">
         <ToolBarPanel Height="60" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Command="ApplicationCommands.New" Background="Transparent" BorderThickness="0">
                 <Image Name="imgNew"  Source="Images\Ribbon.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10" ToolTip="Add Task"></Image>
             </Button>
-            <Button Command="ApplicationCommands.Print" Background="Transparent" BorderThickness="0">
+            <Button x:Name="btnPrint" Command="ApplicationCommands.Print" Background="Transparent" BorderThickness="0">
                 <Image Name="imgPrint" Source="Images\Print.png" Height="24px" Width="24px" HorizontalAlignment="Right" Margin="10" ToolTip="Print To-Do List"></Image>
             </Button>
         </ToolBarPanel>
-        <DataGrid Name="dgTasks">
+        <!--<DataGrid Name="dgTasks">
             
             <GridView>
                 <GridViewColumn>
@@ -30,21 +31,23 @@
                 </GridViewColumn>
             </GridView>
 
-        </DataGrid>
+        </DataGrid>-->
         <!--<ListView Name="lvTasks" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
                         <DockPanel>
                             <local:cntToDo />
-                            --><!--<Image Source="Images\Ribbon.png" Height="43px" DockPanel.Dock="Left" Name="imgRibbon" VerticalAlignment="Top" Margin="5 5 0 0" ></Image>
+                            -->
+        <!--<Image Source="Images\Ribbon.png" Height="43px" DockPanel.Dock="Left" Name="imgRibbon" VerticalAlignment="Top" Margin="5 5 0 0" ></Image>
                             <WrapPanel Orientation="Horizontal" DockPanel.Dock="Top">
                                 <TextBox Height="20px" Width="360px" Margin="5 5 25 5" Name="txtTitle" Text="{Binding title}"></TextBox>
                                 <Image Source="Images\CheckMark.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgComplete"  ></Image>
                                 <Image Source="Images\Edit.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgEdit"></Image>
                                 <Image Source="Images\Delete.png" Margin="5" Height="20px" DockPanel.Dock="Top" Name="imgDelete" ></Image>
                             </WrapPanel>
-                            <TextBox Margin="5,0,5,15" FontSize="14" Name="edtDescription" Text="{Binding descript}"/>--><!--
+                            <TextBox Margin="5,0,5,15" FontSize="14" Name="edtDescription" Text="{Binding descript}"/>-->
+        <!--
                         </DockPanel>
                     </GridViewColumn>
                 </GridView>

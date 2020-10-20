@@ -1,0 +1,13 @@
+﻿<Window x:Class="MyWPFApp.WPFWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
+        Title="WPFWindow1" Height="350" Width="525">
+    <!--<Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Print" Executed="PrintCommand_Executed" CanExecute="PrintCommand_CanExecute" />
+    </Window.CommandBindings>-->
+    <Grid>
+        
+    </Grid>
+</Window>

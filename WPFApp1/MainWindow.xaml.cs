@@ -32,7 +32,7 @@ namespace ToDoInterface2
             InitializeComponent();            
             this.DataContext = this;
             this.oTasks.Load();
-            dgTasks.ItemsSource = this.oTasks.aToDos;
+            // dgTasks.ItemsSource = this.oTasks.aToDos;
             
         }
 
@@ -43,7 +43,7 @@ namespace ToDoInterface2
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             MessageBox.Show("New Task");
-            this.oTasks.New("");
+            // this.oTasks.New("");
         }
         private void PrintCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
