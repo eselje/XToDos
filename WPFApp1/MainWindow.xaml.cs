@@ -42,8 +42,8 @@ namespace ToDoInterface2
         }
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("New Task");
-            // this.oTasks.New("");
+            // MessageBox.Show("New Task");
+            this.oTasks.New("");
         }
         private void PrintCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {

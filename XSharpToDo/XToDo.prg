@@ -98,7 +98,7 @@ BEGIN NAMESPACE XSharpToDo
         This.New("")
     RETURN This.id
     
-    PUBLIC FUNCTION New(cTitle AS STRING)
+    PUBLIC FUNCTION New(cTitle = "" AS STRING )
         LOCAL lUsed    
         This.Clear()
         VAR g = GUID.NEWGUID()

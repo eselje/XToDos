@@ -33,14 +33,14 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
         RETURN
         [Test];
             METHOD closeToDo AS VOID STRICT
-            VAR oToDos := XSharpToDo.XToDos{}
+            VAR oToDos := XToDos{}
             VAR lReturn := oToDos.closeTodos()
             Assert.IsTrue(lReturn, "Could not close ToDos.dbf")
         RETURN
         [Test];
             METHOD getToDo AS VOID STRICT
             LOCAL cExpected AS String 
-            VAR oToDos := XSharpToDo.XToDos{}
+            VAR oToDos := XToDos{}
             VAR oTodo := oToDos.getToDo("EDF53AEF-5C29-4DC4-A")
             VAR cActual := oTodo.title
             cExpected := "Finish paper"
@@ -49,7 +49,7 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
         [Test];
             METHOD getToDos AS VOID STRICT
             LOCAL nTasks AS int
-            VAR oToDos := XSharpToDo.XToDos{}
+            VAR oToDos := XToDos{}
             nTasks := oToDos.Load()
             IF nTasks > 0
                 Assert.AreEqual(nTasks, oTodos.aToDos.Count, "Did not get the ToDos")
@@ -61,7 +61,7 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
             METHOD addToDo AS VOID STRICT
             LOCAL nTasks AS int
             LOCAL oToDos AS XToDos
-            oToDos := XSharpToDo.XToDos{}
+            oToDos := XToDos{}
             nTasks := oToDos.Load()
             oToDos.New("Finish writing unit tests") 
             Assert.AreEqual(nTasks+1, oTodos.aToDos.Count, "Did not add the Task")		
@@ -71,7 +71,7 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
             METHOD getLastToDo AS VOID STRICT
             LOCAL oToDos AS XToDos
             LOCAL oToDo AS XToDo
-            oToDos = XSharpToDo.XToDos{}
+            oToDos = XToDos{}
             oToDo = oToDos.getLast()
         Assert.IsNotNull(oToDo.id,"Did not instantiate the last task")
         
@@ -80,7 +80,7 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
             LOCAL oToDos AS XToDos
             LOCAL oLastTask AS XToDo
             LOCAL lDeleted AS Boolean
-            oToDos = XSharpToDo.XToDos{}
+            oToDos = XToDos{}
             oLastTask = oToDos.getLast()
             lDeleted = oToDos.deleteTask(oLastTask)
             Assert.IsTrue(lDeleted, "Task was not deleted.")
@@ -91,7 +91,7 @@ BEGIN NAMESPACE XSharpToDoNUnitTestClasses
             LOCAL oToDos AS XToDos
             LOCAL oTask AS XToDo
             LOCAL lCompleted AS Boolean
-            oToDos = XSharpToDo.XToDos{}
+            oToDos = XToDos{}
             oTask = oToDos.getLast()
             lCompleted = ! oTask.Completed
             oToDos.toggleCompleted(oTask)
